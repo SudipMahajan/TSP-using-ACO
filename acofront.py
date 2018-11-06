@@ -12,6 +12,7 @@ finaltourbest = []
 finaltourcost = 1000
 Q = 100
 rho = 0.5
+b = 5
 taumatrix = ACO.tau
 
 print ("Number of Cities:",n_cities)
@@ -61,8 +62,8 @@ for t in range(max_it):   # for maximum number of iterations
 			t1 = list( zip(tourbest,tourbest[1:]) ).__contains__( (k[i],k[i+1]) )
 			t2 = list( zip(tourbest,tourbest[1:]) ).__contains__( (k[i+1],k[i]) )
 			if (t1 and t2): # search for edge tuple in best path
-				taumatrix[ k[i] ][ k[i+1] ] =+ deltataubest
-				taumatrix[ k[i+1] ][ k[i] ] =+ deltataubest
+				taumatrix[ k[i] ][ k[i+1] ] =+ (b * deltataubest)
+				taumatrix[ k[i+1] ][ k[i] ] =+ (b * deltataubest)
 			else:
 				continue
 	print ("\n\nTau Matrix after",t,"iteration:\n")
